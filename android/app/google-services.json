@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "388582183308",
+    "project_id": "tick2do-78d73",
+    "storage_bucket": "tick2do-78d73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388582183308:android:6c59699c0d4cfa5f1406a9",
+        "android_client_info": {
+          "package_name": "com.example.tick2do"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388582183308-klhl7dfj23pct7t3elfhreqpv8fj9b74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWBSqu6JbvNdODPBP9QDvkUeYK0VagJvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388582183308-klhl7dfj23pct7t3elfhreqpv8fj9b74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
