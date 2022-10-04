@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tick2do/main.dart';
+import 'package:tick2do/widgets/add_dialog_widget.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -22,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white.withOpacity(0.5),
+        unselectedItemColor: Colors.white.withOpacity(0.7),
         selectedItemColor: Colors.white,
         currentIndex: selectedIndex,
         onTap: (index) => setState(() {
@@ -46,9 +48,24 @@ class _HomePageState extends State<HomePage> {
           borderRadius: BorderRadius.circular(20)
         ),
         onPressed: () => showDialog(
-            context: context,
-            builder: AddTodoDialogWidget(),
-            barrierDismissible: false,
+          context: context,
+          builder: (_)=> AlertDialog(
+            content:Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Add a Task',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18
+                  ),),
+
+              ],
+            ),
+          ),
+
+          barrierDismissible: false,
 
         ),
         child: Icon(Icons.add),),
