@@ -4,6 +4,7 @@ import 'package:tick2do/main.dart';
 import 'package:tick2do/widgets/todo_form_widget.dart';
 import 'package:tick2do/widgets/add_dialog_widget.dart';
 
+import '../widgets/tasks_list_widget.dart';
 import '../widgets/todo_form_widget.dart';
 
 
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      Container(),
+      TasksListWidget(),
       Container(),
     ];
     int selectedIndex = 0;

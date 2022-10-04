@@ -53,13 +53,6 @@ class FormWidget extends StatelessWidget {
     maxLines: 3,
     initialValue: description,
     onChanged: onChangedDescription,
-    validator: (description){
-      if(title!.isEmpty){
-        return'The title must be filled';
-
-      }
-      return null;
-    },
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
       labelText: 'Description',
