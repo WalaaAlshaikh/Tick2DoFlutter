@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tick2do/main.dart';
-import '';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -40,6 +40,18 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+      body: tabs[selectedIndex],
+      floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20)
+        ),
+        onPressed: () => showDialog(
+            context: context,
+            builder: AddTodoDialogWidget(),
+            barrierDismissible: false,
+
+        ),
+        child: Icon(Icons.add),),
     );
   }
 }
