@@ -1,4 +1,4 @@
-#Tue Oct 04 20:18:12 AST 2022
+#Tue Oct 04 20:25:11 AST 2022
 base.2=/Users/walaaalshaikh/StudioProjects/Tick2DoFlutter/build/app/intermediates/dex/debug/mergeDexDebug/classes3.dex
 path.2=classes3.dex
 base.1=/Users/walaaalshaikh/StudioProjects/Tick2DoFlutter/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
