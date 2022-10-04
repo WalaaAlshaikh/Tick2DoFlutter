@@ -8,9 +8,15 @@ import 'TaskWidget.dart';
 class TasksListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TaskWidget(
-      task:Task(cratedTime: DateTime.now(),
-          title: 'Studying')
+    final provider= Provider.of<TaskProvider>(context);
+    final tasks= provider.tasks;
+    return ListView.builder(
+        itemBuilder: (context,index){
+          final task =tasks[index];
+          return TaskWidget(task: task);
+        },
+        itemCount: tasks.length
     );
+
   }
 }

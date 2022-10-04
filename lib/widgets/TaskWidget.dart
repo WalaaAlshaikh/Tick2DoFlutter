@@ -19,6 +19,15 @@ class TaskWidget extends StatelessWidget {
           icon: Icons.edit,
         )
       ],
+    secondaryActions: [
+      IconSlideAction(
+        color: Colors.deepOrange,
+        caption: 'Delete',
+        onTap: (){},
+        icon: Icons.delete,
+
+      )
+    ],
     child: buildTask(context),
   );
 
