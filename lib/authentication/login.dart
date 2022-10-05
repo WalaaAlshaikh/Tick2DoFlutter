@@ -31,7 +31,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(height: 170,),
-        Center(child:Text('Welcome To Tick2Do', style: TextStyle(
+        Center(child:Text('Welcome Back To Tick2Do',textAlign: TextAlign.center, style: TextStyle(
           fontSize: 30, color: Colors.cyan,),) ,) ,
         SizedBox(height: 40),
         TextField(

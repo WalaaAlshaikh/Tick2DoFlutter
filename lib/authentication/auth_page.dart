@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tick2do/authentication/login.dart';
+import 'package:tick2do/authentication/register.dart';
 
 
 class AuthPage extends StatefulWidget {
