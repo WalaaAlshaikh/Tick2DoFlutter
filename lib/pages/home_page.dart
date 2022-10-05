@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final user=FirebaseAuth.instance.currentUser;
     final tabs = [
       TasksListWidget(),
       CompletedListWidget(),
@@ -57,15 +60,19 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: StreamBuilder<List<Task>>(
+
         stream: FirebaseApi.readTasks(),
         builder: (context,snapshot){
+
+
           switch (snapshot.connectionState){
             case ConnectionState.waiting:
               return Center(child: CircularProgressIndicator());
               default:
                 if(snapshot.hasError){
                   return Text('Something went wrong try later');
-                }else{
+                } else{
+
                   final tasks =snapshot.data;
                   final provider= Provider.of<TaskProvider>(context);
                   provider.setTask(tasks!);
@@ -92,6 +99,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// Padding(padding: EdgeInsets.all(32),
+// child: Column(
+// mainAxisAlignment: MainAxisAlignment.start,
+// children: [
+// Text('Signed In as', style: TextStyle(fontSize: 16),
+// ),
+// SizedBox(height: 8),
+// Text(
+// user!.email!,
+// style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+// )
+// ],
+// ),);
 
 
 
