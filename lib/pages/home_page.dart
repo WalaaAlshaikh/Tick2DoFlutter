@@ -59,10 +59,20 @@ class _HomePageState extends State<HomePage> {
       body: StreamBuilder<List<Task>>(
         stream: FirebaseApi.readTasks(),
         builder: (context,snapshot){
-          final tasks =snapshot.data;
-          final provider= Provider.of<TaskProvider>(context);
-          provider.setTask(tasks!);
-          return  tabs[selectedIndex];
+          switch (snapshot.connectionState){
+            case ConnectionState.waiting:
+              return Center(child: CircularProgressIndicator());
+              default:
+                if(snapshot.hasError){
+                  return Text('Something went wrong try later');
+                }else{
+                  final tasks =snapshot.data;
+                  final provider= Provider.of<TaskProvider>(context);
+                  provider.setTask(tasks!);
+                  return  tabs[selectedIndex];
+                }
+          }
+
         },
       ),
       floatingActionButton: FloatingActionButton(

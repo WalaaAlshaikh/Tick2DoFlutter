@@ -13,11 +13,24 @@ class FirebaseApi{
     return docTask.id;
 
   }
-
+// this is for reading data from firebase
   static Stream<List<Task>> readTasks() => FirebaseFirestore.instance
       .collection('task')
       .orderBy(TaskField.cratedTime, descending: true)
       .snapshots()
       .transform(Utils.transformer(Task.fromJson));
+
+  static Future updateTask(Task task) async {
+    final docTask = FirebaseFirestore.instance.collection('task').doc(task.id);
+
+    await docTask.update(task.toJson());
+  }
+
+  static Future deleteTask(Task task) async {
+    final docTask = FirebaseFirestore.instance.collection('task').doc(task.id);
+
+    await docTask.delete();
+
+  }
 
 }

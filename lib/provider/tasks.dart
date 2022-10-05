@@ -22,14 +22,22 @@ class TaskProvider extends ChangeNotifier{
 
   void addTask(Task task) => FirebaseApi.createTask(task);
 
-  void removeTask(Task task) {
-    _tasks.remove(task);
-    notifyListeners();
-  }
+  void removeTask(Task task) => FirebaseApi.deleteTask(task) ;
+
+    //this is for firebase
+
+
+    //this is locally
+    // _tasks.remove(task);
+    // notifyListeners();
+
 
   toggleTodoStatus(Task task) {
     task.isDone= !task.isDone;
-    notifyListeners();
+    FirebaseApi.updateTask(task);
+    //replace notify with the upper code for firebase
+    // notifyListeners();
+
     return task.isDone;
 
   }
@@ -37,7 +45,9 @@ class TaskProvider extends ChangeNotifier{
   void updateTask(Task task, String title, String description) {
     task.title=title;
     task.description=description;
-    notifyListeners();
+    FirebaseApi.updateTask(task);
+    //replace notify with the upper code for firebase
+    // notifyListeners();
   }
 
 

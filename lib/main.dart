@@ -10,15 +10,20 @@ Future main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   static final String title = 'Tick2Do';
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context)
   =>ChangeNotifierProvider(create: (context)=> TaskProvider(),
   child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: title,
+        title: MyApp.title,
     theme: ThemeData(
       primarySwatch: Colors.cyan,
       scaffoldBackgroundColor: Color(0xFFf6f5ee)
