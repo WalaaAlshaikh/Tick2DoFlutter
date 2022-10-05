@@ -13,7 +13,7 @@ class TasksListWidget extends StatelessWidget {
     return tasks.isEmpty? Center(
       child:Text(
 
-          'Create your first task by clicking on the Add Button',
+          'No Tasks here',
           style: TextStyle(
             fontSize: 20,
 
