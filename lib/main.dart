@@ -13,6 +13,8 @@ Future main() async {
   runApp(MyApp());
 }
 
+final navKey=GlobalKey<NavigatorState>();
+
 class MyApp extends StatefulWidget {
   static final String title = 'Tick2Do';
 
@@ -25,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context)
   =>ChangeNotifierProvider(create: (context)=> TaskProvider(),
   child: MaterialApp(
+    navigatorKey: navKey,
         debugShowCheckedModeBanner: false,
         title: MyApp.title,
     theme: ThemeData(

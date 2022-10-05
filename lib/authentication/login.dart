@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tick2do/main.dart';
 
 class LoginWidget extends StatefulWidget {
 
@@ -18,17 +19,20 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: EdgeInsets.all(16),
-    child: Column(
+    padding: EdgeInsets.all(50),
+    child: Center(child:
+    Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Center(child:Text('Welcome To Tick2Do', style: TextStyle(
+          fontSize: 30, color: Colors.cyan,),) ,) ,
         SizedBox(height: 40),
         TextField(
           controller: emailController,
           cursorColor: Colors.white,
           textInputAction: TextInputAction.next,
           decoration: InputDecoration(
-            labelText: 'Enter your email'
+              labelText: 'Enter your email'
           ),
 
         ),
@@ -46,14 +50,18 @@ class _LoginWidgetState extends State<LoginWidget> {
           ),
           icon: Icon(Icons.lock_open, size: 32,color: Colors.white,),
           label: Text('Sign in',
-            style:TextStyle(fontSize: 24, color: Colors.white) ),
+              style:TextStyle(fontSize: 24, color: Colors.white) ),
           onPressed:signIn,
         ),
+        SizedBox(height: 24,)
       ],
-    ),
+    ), ) ,
   );
 
   Future signIn() async  {
+    showDialog(context: context,
+        barrierDismissible: false,
+        builder: (context)=> Center(child: CircularProgressIndicator()) );
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
@@ -62,6 +70,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     } on FirebaseAuthException catch (e){
       print(e);
     }
+
+    navKey.currentState!.popUntil((route) => route.isFirst);
 
   }
 }
