@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:tick2do/pages/home_page.dart';
 import 'package:tick2do/provider/tasks.dart';
 
+import 'authentication/login.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -28,7 +30,53 @@ class _MyAppState extends State<MyApp> {
       primarySwatch: Colors.cyan,
       scaffoldBackgroundColor: Color(0xFFf6f5ee)
     ),
-    home: HomePage(),
+    home: MainPage(),
   ),
   );
+
+
 }
+
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    body: LoginWidget(),
+  );
+}
+
+
+// Future main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatefulWidget {
+//   static final String title = 'Tick2Do';
+//
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyApp> {
+//   @override
+//   Widget build(BuildContext context)
+//   =>ChangeNotifierProvider(create: (context)=> TaskProvider(),
+//     child: MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: MyApp.title,
+//       theme: ThemeData(
+//           primarySwatch: Colors.cyan,
+//           scaffoldBackgroundColor: Color(0xFFf6f5ee)
+//       ),
+//       home: HomePage(),
+//     ),
+//   );
+//
+//
+// }
+
+
+
