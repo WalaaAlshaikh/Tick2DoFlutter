@@ -3,6 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tick2do/main.dart';
 
+import '../utils.dart';
+
 class LoginWidget extends StatefulWidget {
   final VoidCallback onClickSignUp;
   const LoginWidget({
@@ -92,6 +94,8 @@ class _LoginWidgetState extends State<LoginWidget> {
       );
     } on FirebaseAuthException catch (e){
       print(e);
+      Utils.showSnackBarforError(e.message);
+
     }
 
     navKey.currentState!.popUntil((route) => route.isFirst);

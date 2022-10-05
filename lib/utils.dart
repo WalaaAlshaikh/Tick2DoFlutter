@@ -3,8 +3,12 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tick2do/main.dart';
 
 class Utils{
+
+
+
   static void showSnackBar(BuildContext context,String text) =>
 
       ScaffoldMessenger.of(context)
@@ -32,12 +36,15 @@ class Utils{
           sink.add(objects);
         },
       );
+  final messengerKey=GlobalKey<ScaffoldMessengerState>();
 
-  static showSnackBarforError(String? text) {
-    final messengerKey=GlobalKey<ScaffoldMessengerState>();
+
+   static showSnackBarforError(String? text) {
+     final messengerKey=GlobalKey<ScaffoldMessengerState>();
+
     if(text == null) return;
     final snackBar=SnackBar(content: Text(text), backgroundColor:Colors.red ,);
-    messengerKey.currentState!
+    rootScaffoldMessengerKey.currentState!
       ..removeCurrentSnackBar()
       ..showSnackBar(snackBar);
 

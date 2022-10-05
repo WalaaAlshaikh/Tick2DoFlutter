@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tick2do/pages/home_page.dart';
 import 'package:tick2do/provider/tasks.dart';
+import 'package:tick2do/utils.dart';
 
 import 'authentication/auth_page.dart';
 import 'authentication/login.dart';
@@ -15,9 +16,14 @@ Future main() async {
 }
 
 final navKey=GlobalKey<NavigatorState>();
+final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
 
 class MyApp extends StatefulWidget {
+
   static final String title = 'Tick2Do';
+
+
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -28,6 +34,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context)
   =>ChangeNotifierProvider(create: (context)=> TaskProvider(),
   child: MaterialApp(
+    scaffoldMessengerKey: rootScaffoldMessengerKey,
     navigatorKey: navKey,
         debugShowCheckedModeBanner: false,
         title: MyApp.title,
