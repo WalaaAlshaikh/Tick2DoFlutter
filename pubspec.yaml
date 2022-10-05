@@ -44,6 +44,9 @@ dependencies:
   #sildable
   flutter_slidable: ^0.5.7
 
+  #Firebase Auth
+  firebase_auth: ^3.3.4
+
 
 dev_dependencies:
   flutter_test:
