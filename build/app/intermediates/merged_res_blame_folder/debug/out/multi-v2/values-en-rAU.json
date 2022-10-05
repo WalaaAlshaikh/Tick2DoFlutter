@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.tick2do.app-mergeDebugResources-12:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "com.example.tick2do.app-mergeDebugResources-13:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "/Users/walaaalshaikh/.gradle/caches/transforms-3/5c8a81cf2eef89498ff1a72fe119bcdb/transformed/core-1.6.0/res/values-en-rAU/values-en-rAU.xml",
