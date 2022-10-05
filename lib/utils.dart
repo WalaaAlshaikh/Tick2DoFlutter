@@ -13,7 +13,7 @@ class Utils{
 
   static DateTime? toDateTime(Timestamp value) {
     if (value == null) return null;
-
+  
     return value.toDate();
   }
   static dynamic fromDateTimeToJson(DateTime date) {
@@ -32,6 +32,17 @@ class Utils{
           sink.add(objects);
         },
       );
+
+  static showSnackBarforError(String? text) {
+    final messengerKey=GlobalKey<ScaffoldMessengerState>();
+    if(text == null) return;
+    final snackBar=SnackBar(content: Text(text), backgroundColor:Colors.red ,);
+    messengerKey.currentState!
+      ..removeCurrentSnackBar()
+      ..showSnackBar(snackBar);
+
+
+  }
 
 
 }

@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:tick2do/utils.dart';
 
 import '../main.dart';
 
@@ -115,6 +116,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       );
     } on FirebaseAuthException catch (e){
       print(e);
+      Utils.showSnackBarforError(e.message);
     }
 
     navKey.currentState!.popUntil((route) => route.isFirst);
