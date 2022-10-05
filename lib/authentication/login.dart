@@ -1,8 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tick2do/main.dart';
 
 class LoginWidget extends StatefulWidget {
+  final VoidCallback onClickSignUp;
+  const LoginWidget({
+    Key? key,
+    required this.onClickSignUp,
+}) : super(key: key);
 
   @override
  _LoginWidgetState createState() => _LoginWidgetState();
@@ -19,11 +25,12 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: EdgeInsets.all(50),
+    padding: EdgeInsets.all(30),
     child: Center(child:
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        SizedBox(height: 170,),
         Center(child:Text('Welcome To Tick2Do', style: TextStyle(
           fontSize: 30, color: Colors.cyan,),) ,) ,
         SizedBox(height: 40),
@@ -43,7 +50,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           decoration: InputDecoration(labelText: "Password"),
           obscureText: true,
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 30),
         ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             minimumSize: Size.fromHeight(50),
@@ -53,7 +60,23 @@ class _LoginWidgetState extends State<LoginWidget> {
               style:TextStyle(fontSize: 24, color: Colors.white) ),
           onPressed:signIn,
         ),
-        SizedBox(height: 24,)
+        SizedBox(height: 24,),
+        RichText(
+            text: TextSpan(
+              style: TextStyle(color: Colors.black26, fontSize: 15,),
+              text: 'No account?  ',
+              children: [
+                TextSpan(
+                  recognizer: TapGestureRecognizer()
+                    ..onTap=widget.onClickSignUp,
+                  text: "Sign Up",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Theme.of(context).colorScheme.primary
+                  )
+                )
+              ],
+            ))
       ],
     ), ) ,
   );

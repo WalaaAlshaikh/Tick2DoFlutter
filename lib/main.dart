@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:tick2do/pages/home_page.dart';
 import 'package:tick2do/provider/tasks.dart';
 
+import 'authentication/auth_page.dart';
 import 'authentication/login.dart';
 
 Future main() async {
@@ -57,7 +58,7 @@ class MainPage extends StatelessWidget {
         else if(snapshot.hasData){
           return HomePage();
         }else{
-          return LoginWidget();
+          return AuthPage();
         }
 
       },
