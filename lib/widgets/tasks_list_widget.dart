@@ -10,7 +10,20 @@ class TasksListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider= Provider.of<TaskProvider>(context);
     final tasks= provider.tasks;
-    return ListView.builder(
+    return tasks.isEmpty? Center(
+      child:Text(
+
+          'Create your first task by clicking on the Add Button',
+          style: TextStyle(
+            fontSize: 20,
+
+          ),
+      ),
+    )
+    :ListView.separated(
+      separatorBuilder: (context,index)=> Container(height: 8),
+      physics: BouncingScrollPhysics(),
+      padding: EdgeInsets.all(16),
         itemBuilder: (context,index){
           final task =tasks[index];
           return TaskWidget(task: task);

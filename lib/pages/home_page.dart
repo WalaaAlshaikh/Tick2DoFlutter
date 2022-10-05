@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:tick2do/api/firebase_api.dart';
 import 'package:tick2do/main.dart';
+import 'package:tick2do/model/task.dart';
+import 'package:tick2do/provider/tasks.dart';
 import 'package:tick2do/widgets/todo_form_widget.dart';
 import 'package:tick2do/widgets/add_dialog_widget.dart';
 
+import '../widgets/completed_list_widget.dart';
 import '../widgets/tasks_list_widget.dart';
 import '../widgets/todo_form_widget.dart';
 
@@ -15,15 +20,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final tabs = [
       TasksListWidget(),
-      Container(),
+      CompletedListWidget(),
     ];
-    int selectedIndex = 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -52,7 +56,15 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: tabs[selectedIndex],
+      body: StreamBuilder<List<Task>>(
+        stream: FirebaseApi.readTasks(),
+        builder: (context,snapshot){
+          final tasks =snapshot.data;
+          final provider= Provider.of<TaskProvider>(context);
+          provider.setTask(tasks!);
+          return  tabs[selectedIndex];
+        },
+      ),
       floatingActionButton: FloatingActionButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)
