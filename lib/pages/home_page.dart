@@ -6,6 +6,7 @@ import 'package:tick2do/api/firebase_api.dart';
 import 'package:tick2do/main.dart';
 import 'package:tick2do/model/task.dart';
 import 'package:tick2do/provider/tasks.dart';
+import 'package:tick2do/widgets/profile_widget.dart';
 import 'package:tick2do/widgets/todo_form_widget.dart';
 import 'package:tick2do/widgets/add_dialog_widget.dart';
 
@@ -30,6 +31,7 @@ class _HomePageState extends State<HomePage> {
     final tabs = [
       TasksListWidget(),
       CompletedListWidget(),
+      ProfileWidget()
     ];
 
     return Scaffold(
@@ -56,6 +58,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.done, size: 28),
             label: 'Completed',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, size: 28),
+            label: 'Profile',
           )
         ],
       ),
